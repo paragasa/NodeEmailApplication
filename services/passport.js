@@ -23,11 +23,13 @@ passport.deserializeUser((id, done) => {
 //pass config into google strat how to handle client
 //access to db is async, need promise
 passport.use(
+  //google strat decides on the correct domain url
   new GoogleStrategy(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
       callbackURL: "/auth/google/callback" //handle user coming back from google
+      proxy: true //trust proxy HEROKU host
     },
     (accessToken, refreshToken, profile, done) => {
       User.findOne({ googleId: profile.id }).then(existingUser => {
