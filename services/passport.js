@@ -28,7 +28,7 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: "/auth/google/callback" //handle user coming back from google
+      callbackURL: "/auth/google/callback", //handle user coming back from google
       proxy: true //trust proxy HEROKU host
     },
     (accessToken, refreshToken, profile, done) => {
