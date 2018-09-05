@@ -31,21 +31,15 @@ passport.use(
       callbackURL: "/auth/google/callback", //handle user coming back from google
       proxy: true //trust proxy HEROKU host
     },
-    (accessToken, refreshToken, profile, done) => {
-      User.findOne({ googleId: profile.id }).then(existingUser => {
-        //find user
-        //check if record exists, return promise
-        if (existingUser) {
-          //user exists in DB records
-          return done(null, existingUser); //need return on exist
-        } else {
-          //user doesn't exists in DB records, create new record
-          new User({ googleId: profile.id }) //pass google id(profile.id)
-            .save() //take record and save to db
-            .then(user => done(null, user));
-          // console.log("record created for user");
-        }
-      });
+    async (accessToken, refreshToken, profile, done) => {
+      const existingUser = await User.findOne({ googleId: profile.id });
+
+      if (existingUser) {
+        return done(null, existingUser);
+      }
+
+      const user = await new User({ googleId: profile.id }).save();
+      done(null, user);
     }
   )
 );
