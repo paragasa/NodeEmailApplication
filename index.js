@@ -8,7 +8,7 @@ const keys = require("./config/keys");
 
 require("./models/User"); //get user
 require("./services/passport"); //check passport, w/ user
-//mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongoURI); //get db using user key
 //each app is associate to every route handler
 const app = express(); //generates a single application of express
