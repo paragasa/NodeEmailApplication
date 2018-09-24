@@ -31,13 +31,14 @@ passport.use(
       callbackURL: "/auth/google/callback", //handle user coming back from google
       proxy: true //trust proxy HEROKU host
     },
+    //use async  for better concurrency
     async (accessToken, refreshToken, profile, done) => {
       const existingUser = await User.findOne({ googleId: profile.id });
-
+      //check if existing user
       if (existingUser) {
         return done(null, existingUser);
       }
-
+      //create a user record
       const user = await new User({ googleId: profile.id }).save();
       done(null, user);
     }
