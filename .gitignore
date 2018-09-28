@@ -1,3 +1,6 @@
 # Don't track content of these folders
 node_modules/
 dev.js
+/Users/paragasa/workspace/server/config/dev.js
+config/dev.js
+node_modules
