@@ -1,3 +1,4 @@
+//SEND USER HERE ONCE LOG or BY DEFAULT
 import React from "react";
 
 const Landing = () => {

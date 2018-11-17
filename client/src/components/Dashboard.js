@@ -1,3 +1,5 @@
+//Main Dashboard, allow survey creation
+//routed from google callback OAUTH
 import React from "react";
 import { Link } from "react-router-dom";
 const Dashboard = () => {

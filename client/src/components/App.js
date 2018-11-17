@@ -1,3 +1,4 @@
+//APP CLIENT
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom"; //react router helprs fornav dom
 import { connect } from "react-redux"; //interact with action createStore
@@ -8,8 +9,7 @@ import * as actions from "../actions"; //take all action creators assign to acti
 import Header from "./Header";
 import Landing from "./Landing";
 import Dashboard from "./Dashboard";
-
-const SurveyNew = () => <h2>SurveyNew</h2>;
+import SurveyNew from "./surveys/SurveyNew";
 
 class App extends Component {
   componentDidMount() {
@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div className="container">
         <BrowserRouter>
-          <div>
+          <div className="container">
             <Header />
             <Route exact path="/" component={Landing} />
             <Route exact path="/surveys" component={Dashboard} />
